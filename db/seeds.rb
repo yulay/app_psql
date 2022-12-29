@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Article.new(name: "Math article", description: "My new description").save
+Article.create(name: "Spanish article", description: "Hola mundo")
