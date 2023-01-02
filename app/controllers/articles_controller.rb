@@ -44,9 +44,13 @@ class ArticlesController < ApplicationController
 
     def create
         # comentada por la refactorizacion con params
-        #@article = Article.new(name: params[:article][:name], description: params[:article][:description])
+        # @article = Article.new(name: params[:article][:name], description: params[:article][:description])
         # Cambiada por lo siguiente
-        @article = Article.new(article_params)
+        # Estas dos lineas se pueden hacer como la unica de abajo
+        # @article = Article.new(article_params)
+        # @article.user_id = current_user.id
+        # se pueden hacer asi
+        @article = current_user.articles.build(article_params)
 
         if @article.save
             redirect_to articles_path, notice: "Article was created."

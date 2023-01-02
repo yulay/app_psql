@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user!
+    before_action :user_has_profile?
 
     # si no se usa helper_method, el metodo current_user solo estara disponible en los controladores
     # al usar helper_method, permite que el metodo current_user este disponible en todos los views de la aplicacion
@@ -22,5 +23,11 @@ class ApplicationController < ActionController::Base
         # redirect_to login_path, notice: 'You have to be logged in.'
         # Refactorizado queda de la siguiente manera
         redirect_to login_path, notice: 'You have to be logged in.' if !current_user
+    end
+
+    def user_has_profile?
+        if current_user && current_user.profile.nil?
+            redirect_to new_profile_path, notice: 'Tell us more about you.'
+        end
     end
 end

@@ -24,14 +24,11 @@
             <%= form.label :password_confirmation %>
             <%= form.password_field :password_confirmation %>
         </div>
-        <% if type == "new" %>
-            <div>
-                <%= form.submit 'Sign up' %>
-            </div>
-        <% else %>
-            <div>
-                <%= form.submit 'Edit user' %>
-            </div>
-        <% end %>
+        <div>
+                    
+        </div>
+        <div>
+            <%= form.submit buttonText %>
+        </div>
     <% end %>
 </div>
