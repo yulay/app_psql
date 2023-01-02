@@ -1,17 +1,24 @@
-Apps form manage articles and users
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
 Things you may want to cover:
 
-    Ruby version - 3.0
+* Ruby version
 
-    Rails - 7.0
+* System dependencies
 
-    System dependencies
-        hrib
-        dotenv
-        debug
-        bcrypt
+* Configuration
 
-    Database creation - Postgre SQL
+* Database creation
 
-    Database initialization - rails db:seed
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
