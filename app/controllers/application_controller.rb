@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 
     # Devuelve el usuario logueado o nil si no hay usuario logueado
     def current_user
+        # por si se bugea al eliminar el usuario sin antes haber cerrado la sesion
+        # session[:user_id] = nil
         # if session[:user_id]
             # User.find(session[:user_id])
         # end

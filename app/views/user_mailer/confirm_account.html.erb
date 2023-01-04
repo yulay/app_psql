@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to articles-and-users-app, <%= @user.email %></h1>
+    <div>
+      <p>Hello <%= @user.email %></p>
+      <p>
+        You need to confirm your email account. <br>
+        Please, visit this link: <%= @url %>
+      </p>
+    </div>
+    <p>
+        Thanks for joining and have a great day!
+    </p>
+  </body>
+</html>

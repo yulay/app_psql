@@ -1,5 +1,8 @@
 Rails.application.routes.draw do  
   resources :profiles
+
+  get '/confirm_email/:token', to: 'users#confirm_email'
+
   delete '/logout', to: "sessions#destroy", as: 'logout'
 
   post '/login', to: "sessions#create", as: 'new_user_session'
