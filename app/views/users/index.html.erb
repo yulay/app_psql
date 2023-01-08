@@ -2,6 +2,6 @@
 
 <div>
     <% @users.each do |user| %>
-        <%= render 'user', user: user %>
+        <%= render 'user', profile: user.profile %>
     <% end %>
 </div>

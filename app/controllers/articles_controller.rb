@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     #traves del metodo set_article y al usarse con show edit destroy update
     # puede emplear only (solo en esos) o except (en todos menos en estos)
     before_action :set_article, only: %i[show edit destroy update]
+    before_action :categories_ids, only: %i[create update]
 
     def index
         @articles = Article.all
@@ -15,6 +16,7 @@ class ArticlesController < ApplicationController
     def show
         #Debemos conocer el articulo que vamos a mostrar, para eso usamos el find
         
+        @comment = Comment.new
     end
 
     def edit
@@ -31,6 +33,8 @@ class ArticlesController < ApplicationController
 
     def update
         #Debemos conocer el articulo que vamos a actualizar, para eso usamos el find
+
+        Article.update_categories(@article, categories_ids) if categories_ids.present?
 
         if @article.update(article_params)
             redirect_to article_path(@article), notice: "Article was updated."
@@ -52,6 +56,8 @@ class ArticlesController < ApplicationController
         # se pueden hacer asi
         @article = current_user.articles.build(article_params)
 
+        Article.add_categories(@article, categories_ids) if categories_ids.present?
+
         if @article.save
             redirect_to articles_path, notice: "Article was created."
         else
@@ -67,7 +73,11 @@ class ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(:article).permit(:name, :description)
+        params.require(:article).permit(:name, :description, :avatar, :body)
+    end
+
+    def categories_ids
+        params[:categories][:ids].reject{|i| i.empty? }
     end
 
     def set_article

@@ -3,5 +3,5 @@
 <div>
     <%= @user.email %><br>
     <%= link_to 'Edit user', edit_user_path(@user) %><br>
-    <%= button_to 'Delete user', user_destroy_path(@user), method: :delete %>
+    <%= button_to 'Delete user', user_destroy_path(@user), method: :delete, form: {data: { turbo_confirm: 'Are you sure?' } } %>
 </div>

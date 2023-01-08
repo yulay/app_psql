@@ -1,4 +1,5 @@
 <div>
-    <%= user.email %><br>
-    <%= link_to 'See user', user_path(user) %>
+    <%= profile.name if !profile.nil? %> <br>
+    <%= profile.user.email if !profile.nil? %> <br>
+    <%= link_to 'See user', profile_path(profile) if !profile.nil? %>
 </div>

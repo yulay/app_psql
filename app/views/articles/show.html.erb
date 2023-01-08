@@ -1,13 +1,40 @@
-<h1>Show Articles</h1>
+<h1>Show Article</h1>
 
 <div>
     <h3><%= @article.name %></h3>
 </div>
 <div>
+    <% @article.categories.each do |c| %>
+        <span>
+            <%= c.name %><br>
+        </span>
+    <% end %>  
+</div>
+<div>
     <%= @article.description %>
+</div>
+<div>
+    <%= image_tag(@article.avatar, width:"100", height:"100") if @article.avatar.attached? %>
+</div>
+<div>
+    <%= @article.body %>
 </div>
 <%= notice if notice %>
 <div>
     <%= link_to 'Edit article',  article_edit_path(@article)%>
-    <%= button_to 'Delete article', article_destroy_path(@article), method: :delete %>
+    <%= button_to 'Delete article', article_destroy_path(@article), method: :delete, form: {data: { turbo_confirm: 'Are you sure?' } } %>
+</div>
+
+<hr>
+
+<div>
+    <h4>Comments</h4>
+    <% @article.comments.each do |c| %>
+        <%= render 'comments/comment', comment: c %>
+    <% end %>
+</div>
+
+<div>
+    <h5>Add comment</h5>
+    <%= render 'comments/form', {article: @article, comment: @comment} %>
 </div>

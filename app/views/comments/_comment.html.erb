@@ -1,0 +1,11 @@
+<div id="<%= dom_id comment %>">
+  <p>
+    <strong>Text:</strong>
+    <%= comment.text %> <br>
+    <%= comment.user.email %>
+  </p>
+
+  <div>
+    <%= button_to 'Delete comment', comment_path(comment), method: :delete, form: {data: { turbo_confirm: 'Are you sure?' } } %>
+  </div>
+</div>

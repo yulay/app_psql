@@ -21,6 +21,22 @@
             <%= form.text_field :description %>
         </div>
         <div>
+            <%= form.label :avatar, 'Insert main image: ' %>
+            <%= form.file_field :avatar %>
+        </div>
+            <%= form.label :body, 'Insert content: ' %>
+            <%= form.rich_text_area :body %>
+        <div>
+            <%= collection_check_boxes(:categories, :ids, Category.all, :id, :name) do |b| %>
+                <% if @article.categories.include?(Category.find(b.object.id)) %>
+                    <%= b.check_box checked: true %>
+                <% else %>
+                    <%= b.check_box %>
+                <% end %>
+                <%= b.object.name  %>
+            <% end %>
+        </div>
+        <div>
             <%= form.submit %>
         </div>
     <% end %>
